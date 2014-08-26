@@ -7,8 +7,8 @@ public class Flight {
 	private Integer length;
 
 	private Airline airline;
-//	private Airport dptr_airport;
-//	private Airport arr_airport;
+	private Airport dptr_airport;
+	private Airport arr_airport;
 /*---------------------------------Actions---------------------------------*/
 	public Integer getId() {
 		return id;
@@ -30,7 +30,7 @@ public class Flight {
 	public void setAirline(Airline airline) {
 		this.airline = airline;
 	}
-	/*
+
 	public Airport getDptr_airport() {
 		return dptr_airport;
 	}
@@ -44,7 +44,7 @@ public class Flight {
 	public void setArr_airport(Airport arr_airport) {
 		this.arr_airport = arr_airport;
 	}
-	*/
+
 	public Integer getLength() {
 		return length;
 	}

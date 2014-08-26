@@ -30,12 +30,14 @@
     </target>
 
     <target name="run" depends="compile">
-        <java fork="true" classname="fss.AirlineManager" classpathref="libraries">
+        <java fork="true" classname="fss.Manager" classpathref="libraries">
             <classpath path="${targetdir}"/>
             <arg value="${action}"/>
             <arg value="${arg1}"/>
             <arg value="${arg2}"/>
             <arg value="${arg3}"/>
+            <arg value="${arg4}"/>
+            <arg value="${arg5}"/>
         </java>
     </target>
 

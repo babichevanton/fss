@@ -11,15 +11,15 @@
 	
 		<property name="name" column="name" type="string"/>
 		<property name="city" column="city" type="string"/>
-		<property name="phone_number" column name="phone_number" type="string"/>
+		<property name="phone_number" column="phone_number" type="string"/>
 		
-		<!--set name="flights_dptr" inverse="true" lazy="true">
+		<set name="flights_dptr" inverse="true" lazy="false">
 			<key column="dptr_airport"/>
 			<one-to-many class="Flight"/>
 		</set>
-		<set name="flights_arr" inverse="true" lazy="true">
+		<set name="flights_arr" inverse="true" lazy="false">
 			<key column="arr_airport"/>
 			<one-to-many class="Flight"/>
-		</set-->
+		</set>
 	</class>
 </hibernate-mapping>

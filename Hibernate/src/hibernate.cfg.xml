@@ -31,7 +31,7 @@
 
 		<!-- Mapping files -->
 		<mapping resource="fss/airline.hbm.xml"/>
-		<!--mapping resource="fss/airport.hbm.xml"/-->
+		<mapping resource="fss/airport.hbm.xml"/>
 		<mapping resource="fss/flight.hbm.xml"/>
 
 	</session-factory>

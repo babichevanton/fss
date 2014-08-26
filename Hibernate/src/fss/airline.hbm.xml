@@ -11,9 +11,9 @@
 	
 		<property name="name" column="name" type="string"/>
 		
-		<!--set name="flights" table="Flight" inverse="true" lazy="true">
+		<set name="Flights" table="Flight" inverse="true" lazy="false">
 			<key column="airline"/>
-			<one-to-many column="number" class="fss.Flight"/>
-		</set-->
+			<one-to-many class="fss.Flight"/>
+		</set>
 	</class>
 </hibernate-mapping>
