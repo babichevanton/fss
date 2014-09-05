@@ -24,7 +24,7 @@
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 
 		<!-- Echo all executed SQL to stdout -->
-		<property name="show_sql">true</property>
+		<!--property name="show_sql">true</property-->
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">update</property>
@@ -33,6 +33,11 @@
 		<mapping resource="fss/airline.hbm.xml"/>
 		<mapping resource="fss/airport.hbm.xml"/>
 		<mapping resource="fss/flight.hbm.xml"/>
+		<mapping resource="fss/particularflight.hbm.xml"/>
+		<mapping resource="fss/serviceclass.hbm.xml"/>
+		<mapping resource="fss/client.hbm.xml"/>
+		<mapping resource="fss/seat.hbm.xml"/>
+		<mapping resource="fss/bonus.hbm.xml"/>
 
 	</session-factory>
 </hibernate-configuration>

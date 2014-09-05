@@ -12,8 +12,13 @@
 		<property name="number" column="number" type="string"/>
 		<property name="length" column="length" type="int"/>
 
-		<many-to-one name="Airline" class="fss.Airline" column="airline"/>
-		<many-to-one name="Dptr_airport" class="fss.Airport" column="dptr_airport"/>
-		<many-to-one name="Arr_airport" class="fss.Airport" column="arr_airport"/>
+		<many-to-one name="Airline" lazy="false" class="fss.Airline" column="airline"/>
+		<many-to-one name="Dptr_airport" lazy="false" class="fss.Airport" column="dptr_airport"/>
+		<many-to-one name="Arr_airport" lazy="false" class="fss.Airport" column="arr_airport"/>
+
+		<set name="ParticularFlights" table="ParticularFlight" inverse="true" lazy="false">
+			<key column="flight"/>
+			<one-to-many class="fss.ParticularFlight"/>
+		</set>
 	</class>
 </hibernate-mapping>

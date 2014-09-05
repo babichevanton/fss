@@ -9,8 +9,8 @@ public class Airport {
 	private String city;
 	private String phone_number;
 	
-	//private Set<Flight> flights_dptr;
-	//private Set<Flight> flights_arr;
+	private Set<Flight> flights_dptr;
+	private Set<Flight> flights_arr;
 /*---------------------------------Actions---------------------------------*/
 	public Integer getId() {
 		return id;
@@ -39,7 +39,7 @@ public class Airport {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
-	/*
+
 	public Set<Flight> getFlights_dptr() {
 		return flights_dptr;
 	}
@@ -53,5 +53,5 @@ public class Airport {
 	public void setFlights_arr(Set<Flight> flights_arr) {
 		this.flights_arr = flights_arr;
 	}
-	*/
+
 }

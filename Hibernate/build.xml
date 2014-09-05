@@ -29,6 +29,16 @@
         </copy>
     </target>
 
+    <target name="war" depends="compile">
+        <war destfile="fss.war" webxml="web.xml">
+            <lib dir="${librarydir}">
+              <exclude name="jsdk*.jar"/>
+            </lib>
+
+            <classes dir="${targetdir}"/>
+        </war>
+    </target>
+
     <target name="run" depends="compile">
         <java fork="true" classname="fss.Manager" classpathref="libraries">
             <classpath path="${targetdir}"/>

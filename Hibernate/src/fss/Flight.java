@@ -1,4 +1,6 @@
 package fss;
+
+import java.util.Set;
  
 public class Flight {
 /*---------------------------------Columns---------------------------------*/
@@ -9,6 +11,8 @@ public class Flight {
 	private Airline airline;
 	private Airport dptr_airport;
 	private Airport arr_airport;
+
+	private Set<ParticularFlight> particular_flights;
 /*---------------------------------Actions---------------------------------*/
 	public Integer getId() {
 		return id;
@@ -51,4 +55,12 @@ public class Flight {
 	public void setLength(Integer length) {
 		this.length = length;
 	}
+
+	public Set<ParticularFlight> getParticularFlights() {
+		return particular_flights;
+	}
+	public void setParticularFlights(Set<ParticularFlight> particular_flights) {
+		this.particular_flights = particular_flights;
+	}
+
 }

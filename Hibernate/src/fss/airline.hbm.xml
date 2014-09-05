@@ -15,5 +15,9 @@
 			<key column="airline"/>
 			<one-to-many class="fss.Flight"/>
 		</set>
+		<set name="Bonuses" table="Bonus" inverse="true" lazy="false">
+			<key column="airline"/>
+			<one-to-many class="fss.Bonus"/>
+		</set>
 	</class>
 </hibernate-mapping>

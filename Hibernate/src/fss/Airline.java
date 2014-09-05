@@ -9,6 +9,7 @@ public class Airline {
 	private String name;
 	
 	private Set<Flight> flights;
+	private Set<Bonus> bonuses;
 /*---------------------------------Actions---------------------------------*/
 	public Integer getId() {
 		return id;
@@ -29,6 +30,13 @@ public class Airline {
 	}
 	public void setFlights(Set<Flight> flights) {
 		this.flights = flights;
+	}
+
+	public Set<Bonus> getBonuses() {
+		return bonuses;
+	}
+	public void setBonuses(Set<Bonus> bonuses) {
+		this.bonuses = bonuses;
 	}
 
 }
