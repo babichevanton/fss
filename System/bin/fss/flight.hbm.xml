@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+	<class name="fss.Flight" table="Flight">
+		<id name="id" type="int" column="idFlight" >
+			<generator class="identity"/>
+		</id>
+	
+		<property name="number" column="number" type="string"/>
+		<property name="length" column="length" type="int"/>
+
+		<many-to-one name="Airline" lazy="false" class="fss.Airline" column="airline"/>
+		<many-to-one name="Dptr_airport" lazy="false" class="fss.Airport" column="dptr_airport"/>
+		<many-to-one name="Arr_airport" lazy="false" class="fss.Airport" column="arr_airport"/>
+
+		<set name="ParticularFlights" table="ParticularFlight" inverse="true" lazy="false">
+			<key column="flight"/>
+			<one-to-many class="fss.ParticularFlight"/>
+		</set>
+	</class>
+</hibernate-mapping>

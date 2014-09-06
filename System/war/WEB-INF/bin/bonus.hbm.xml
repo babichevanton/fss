@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+	<class name="springapp.fss.POJO.Bonus" table="Bonus">
+		<id name="id" type="int" column="idBonus" >
+			<generator class="identity"/>
+		</id>
+	
+		<property name="name" column="name" type="string"/>
+		<property name="points" column="points" type="long"/>
+
+		<many-to-one name="Airline" lazy="false" class="springapp.fss.POJO.Airline" column="airline"/>
+		<many-to-one name="Client" lazy="false" class="springapp.fss.POJO.Client" column="client"/>
+	</class>
+</hibernate-mapping>
