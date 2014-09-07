@@ -7,10 +7,10 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import springapp.fss.pojo.ParticularFlight;
+import springapp.fss.pojo.Client;
 
-@Repository("flightDAO")
-public class FlightDAO {
+@Repository("clientDAO")
+public class ClientDAO {
 
 	private SessionFactory sessionFactory;
 
@@ -19,10 +19,14 @@ public class FlightDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public List<ParticularFlight> getAll() {
+	public Client authorize(AuthorizationForm form) {
         Session session = sessionFactory.getCurrentSession();
 
-        List<ParticularFlight> result = session.createCriteria(ParticularFlight.class).list();
+        Client result = session
+        	.createCriteria(Client.class)
+        	.add(Restrictions.eq("login", form.getLogin()))
+        	.add(Restrictions.eq("password", form.getPassword()))
+        	.uniqueResult();
 
         return result;
 	}
