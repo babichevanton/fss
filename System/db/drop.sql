@@ -17,5 +17,7 @@ DROP TABLE IF EXISTS Airline;
 
 DROP TABLE IF EXISTS Client;
 
+DROP TABLE IF EXISTS Administrator;
+
 
 DROP DATABASE IF EXISTS FlightSupportSystem;

@@ -17,6 +17,10 @@ DELETE FROM Airline;
 
 DELETE FROM Client;
 
+DELETE FROM Administrator;
+
+
+INSERT INTO Administrator VALUES (Null, 'admin', 'administration');
 
 INSERT INTO Client VALUES (Null, 'vasyapetr', 'qwerty@1', 'Vasiliy', 'Petrovich', 'Terescenko', NULL, '+79167247259', 'teres_vp@gmail.com');
 INSERT INTO Client VALUES (Null, 'eagle_eye', 'cruelssd', 'Anna', 'Nicolaevna', 'Orlova', 'Moscow, Pivnaya street 25', '+79639359236', 'gloomy@ya.ru');

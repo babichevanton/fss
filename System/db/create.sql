@@ -16,6 +16,13 @@ CREATE TABLE Client (
 	PRIMARY KEY (idClient)
 );
 
+CREATE TABLE Administrator (
+	idAdministrator INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	login VARCHAR(20) NOT NULL,
+	password VARCHAR(20) NOT NULL,
+	PRIMARY KEY (idAdministrator)
+);
+
 CREATE TABLE Airline (
 	idAirline INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	name VARCHAR(50) NOT NULL,
