@@ -1,52 +1,53 @@
-<project name="fss" default="compile" basedir=".">
+<?xml version="1.0"?>
 
-    <property name="sourcedir" value="${basedir}/src"/>
-    <property name="targetdir" value="${basedir}/war/WEB-INF/bin"/>
-    <property name="librarydir" value="${basedir}/war/WEB-INF/lib"/>
-    <property name="projectname" value="fss"/>
+<project name="fss" basedir="." default="usage">
+    <property file="build.properties"/>
+
+    <property name="src.dir" value="src"/>
     <property name="web.dir" value="war"/>
-    <property name="deploy.path" value="."/>
+    <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+    <property name="name" value="fss"/>
+	<property name="deploy.path" value="."/>
 
-
-    <path id="libraries">
-        <fileset dir="${librarydir}">
+    <path id="master-classpath">
+        <fileset dir="${web.dir}/WEB-INF/lib">
             <include name="*.jar"/>
         </fileset>
+        <pathelement path="${build.dir}"/>
     </path>
 
-    <target name="clean">
-        <delete dir="${targetdir}"/>
-        <mkdir dir="${targetdir}"/>
+    <target name="usage">
+        <echo message=""/>
+        <echo message="${name} build file"/>
+        <echo message="-----------------------------------"/>
+        <echo message=""/>
+        <echo message="Available targets are:"/>
+        <echo message=""/>
+        <echo message="build     --> Build the application"/>
+        <echo message="deploy    --> Deploy application as directory"/>
+        <echo message="deploywar --> Deploy application as a WAR file"/>
+        <echo message=""/>
     </target>
 
-    <target name="compile" depends="clean, copy-resources">
-        <javac srcdir="${sourcedir}"
-               destdir="${targetdir}"
-               classpathref="libraries"/>
+    <target name="build" description="Compile main source tree java files">
+        <mkdir dir="${build.dir}"/>
+        <javac destdir="${build.dir}" source="1.7" target="1.7" debug="true"
+               deprecation="false" optimize="false" failonerror="true">
+            <src path="${src.dir}"/>
+            <classpath refid="master-classpath"/>
+        </javac>
     </target>
 
-    <target name="copy-resources">
-        <copy todir="${targetdir}">
-            <fileset dir="${sourcedir}">
-                <exclude name="**/*.java"/>
+    <target name="deploy" depends="build" description="Deploy application">
+        <copy todir="${deploy.path}/${name}" preservelastmodified="true">
+            <fileset dir="${web.dir}">
+                <include name="**/*.*"/>
             </fileset>
         </copy>
     </target>
 
-    <target name="run" depends="compile">
-        <java fork="true" classname="springapp.fss.Manager" classpathref="libraries">
-            <classpath path="${targetdir}"/>
-            <arg value="${action}"/>
-            <arg value="${arg1}"/>
-            <arg value="${arg2}"/>
-            <arg value="${arg3}"/>
-            <arg value="${arg4}"/>
-            <arg value="${arg5}"/>
-        </java>
-    </target>
-
-    <target name="deploywar" depends="clean, compile" description="Deploy application as a WAR file">
-        <war destfile="${projectname}.war"
+    <target name="deploywar" depends="clean, build" description="Deploy application as a WAR file">
+        <war destfile="${name}.war"
              webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}">
                 <include name="**/*.*"/>
@@ -58,5 +59,9 @@
             </fileset>
         </copy>
     </target>
-    
+	
+	<target name="clean" description="Deletes compiled classes">
+		<delete dir="${build.dir}/springapp"/>
+	</target>
 </project>
+	

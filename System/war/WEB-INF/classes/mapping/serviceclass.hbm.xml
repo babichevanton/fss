@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+	<class name="springapp.fss.pojo.ServiceClass" table="ServiceClass">
+		<id name="id" type="int" column="idServiceClass" >
+			<generator class="identity"/>
+		</id>
+	
+		<property name="name" column="name" type="string"/>
+		<property name="coeff" column="bonus_coeff" type="float"/>
+		<property name="cost" column="cost" type="float"/>
+
+		<many-to-one name="ParticularFlight" lazy="false" class="springapp.fss.pojo.ParticularFlight" column="particular_flight"/>
+
+		<set name="Seats" table="Seat" inverse="true" lazy="false">
+			<key column="class"/>
+			<one-to-many class="springapp.fss.pojo.Seat"/>
+		</set>
+	</class>
+</hibernate-mapping>

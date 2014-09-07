@@ -16,9 +16,9 @@
 	 <mvc:annotation-driven />
 	 <tx:annotation-driven transaction-manager="txManager"/>
 	 
-	 <!-- mvc:resources mapping="/css/**" location="/css/" /-->
-	 <!-- mvc:resources mapping="/js/**" location="/js/" /-->
-	 <!-- mvc:resources mapping="/fonts/**" location="/fonts/" /-->
+	 <mvc:resources mapping="/css/**" location="/css/" />
+	 <mvc:resources mapping="/js/**" location="/js/" />
+	 <mvc:resources mapping="/fonts/**" location="/fonts/" />
 	 
 	 <bean id="validator"
         class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
@@ -46,14 +46,7 @@
             </property>
             <property name="mappingLocations">
                 <list>
-                    <value>WEB-INF/bin/airline.hbm.xml</value>
-                    <value>WEB-INF/bin/airport.hbm.xml</value>
-                    <value>WEB-INF/bin/flight.hbm.xml</value>
-                    <value>WEB-INF/bin/particularflight.hbm.xml</value>
-                    <value>WEB-INF/bin/bonus.hbm.xml</value>
-                    <value>WEB-INF/bin/client.hbm.xml</value>
-                    <value>WEB-INF/bin/seat.hbm.xml</value>
-                    <value>WEB-INF/bin/serviceclass.hbm.xml</value>
+                    <value>classpath:mapping/*.hbm.xml</value>
                 </list>
             </property>
       </bean>

@@ -13,7 +13,7 @@
 	<div class="row">
 		<div class="col-lg-10">
 		    <a href="<c:url value="/home"/>" style="color:inherit;">
-			<h1><p class="text-center" style="font-size:64px;">аЁаАаМаОаЛббб</p></h1>
+			<h1><p class="text-center" style="font-size:64px;">Авиарейсы</p></h1>
 			</a>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
     </div>
     
 	<div class="row">
-		<p class="text-center text-muted">2014 @ Mikhail Koltsov</p>
+		<p class="text-center text-muted">2014 @ Anton Babichev</p>
 	</div>
 </div>
   </body>
