@@ -24,7 +24,7 @@ public class SearchflightForm implements Serializable {
 	public String getDptr_time() {
 		return dptr_time;
 	}
-	public void setDptr_time(String dptr_town) {
+	public void setDptr_time(String dptr_time) {
 		this.dptr_time = dptr_time;
 	}
 
@@ -38,7 +38,7 @@ public class SearchflightForm implements Serializable {
 	public String getArr_time() {
 		return arr_time;
 	}
-	public void setArr_time(String arr_town) {
+	public void setArr_time(String arr_time) {
 		this.arr_time = arr_time;
 	}
 

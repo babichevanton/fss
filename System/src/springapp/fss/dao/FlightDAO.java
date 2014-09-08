@@ -1,12 +1,13 @@
 package springapp.fss.dao;
 
 import java.util.List;
+import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
-import org.hibernate.Criteria; 
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -50,18 +51,20 @@ public class FlightDAO {
 
         Criteria criteria = session
         	.createCriteria(ParticularFlight.class, "pt_flight")
-        	.createAlias("pt_flight.flight", "flight");
-/*
-        	.createAlias("flight.dptr_airport", "dptr_arp")
-        	.createAlias("flight.arr_airport", "arr_arp");
+        	.createAlias("pt_flight.Flight", "flight")
+        	.createAlias("flight.Dptr_airport", "dptr_arp")
+        	.createAlias("flight.Arr_airport", "arr_arp");
 
         addRestrictionIfNotNull(criteria, "dptr_arp.city", form.getDptr_town(), 0);
         addRestrictionIfNotNull(criteria, "arr_arp.city", form.getArr_town(), 0);
-*/
-        /*
+        //*
         try {
-	        addRestrictionIfNotNull(criteria, "pt_flight.dptr", sdf.parse(form.getDptr_time()), 2);
-	        addRestrictionIfNotNull(criteria, "pt_flight.arr", sdf.parse(form.getArr_time()), 1);
+        	Calendar dptr_time = Calendar.getInstance();
+        	Calendar arr_time = Calendar.getInstance();
+        	dptr_time.setTime(sdf.parse(form.getDptr_time()));
+        	arr_time.setTime(sdf.parse(form.getArr_time()));
+	        addRestrictionIfNotNull(criteria, "pt_flight.dptr", dptr_time, 2);
+	        addRestrictionIfNotNull(criteria, "pt_flight.arr", arr_time, 1);
         } catch(ParseException ex) {}
 		//*/
 
