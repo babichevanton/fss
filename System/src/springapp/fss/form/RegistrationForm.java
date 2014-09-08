@@ -15,7 +15,7 @@ public class RegistrationForm implements Serializable {
 /*---------------------------------Actions---------------------------------*/	
 	@Override
 	public String toString() {
-		return "ARegistrationForm [login=" + login + ", password=" + password + ", name=" + name + ", patronymic=" + patronymic + 
+		return "RegistrationForm [login=" + login + ", password=" + password + ", name=" + name + ", patronymic=" + patronymic + 
 				", surname=" + surname + ", address=" + address + ", phone=" + phone + ", email=" + email + "]";
 	}
 
