@@ -22,12 +22,13 @@
 			<a href="<c:url value="/authorization/client"/>">
 				<p class="text-right" style="margin-top:20px;">Клиентам</p>
 			</a>
-			<a href="<c:url value="/authorization/administrator"/>">
+			<a href="<c:url value="/authorization/admin"/>">
 				<p class="text-right" style="margin-top:20px;">Администраторам</p>
 			</a>
-			<a href="<c:url value="/registry"/>">
+			<a href="<c:url value="/registration"/>">
 				<p class="text-right" style="margin-top:20px;">Регистрация</p>
 			</a>
 		</div>
 	</div>
+	<hr>
 	<div class="row" style="margin-bottom:30px; margin-top:30px">
