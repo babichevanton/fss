@@ -61,7 +61,7 @@
                           </table>
                         </td>
                         <td>
-                          <a href="<c:url value="/flights/part_f=${flight.id}"/>">
+                          <a href="<c:url value="flights/part_fl=${flight.id}"/>">
                             <p class="text-center">дополнительно</p>
                           </a>
                         </td>

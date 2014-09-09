@@ -21,21 +21,9 @@ public class FlightDAO {
 
 	private SessionFactory sessionFactory;
 
-    private void addRestrictionIfNotNull(Criteria criteria, String propertyName, String value, int type) {
+    private void addRestrictionIfNotNull(Criteria criteria, String propertyName, String value) {
         if (!value.equals("")) {
-            switch (type) {
-                case 0:
-                    criteria.add(Restrictions.eq(propertyName, value));
-                    break;
-                case 1:
-                    criteria.add(Restrictions.le(propertyName, value));
-                    break;
-                case 2:
-                    criteria.add(Restrictions.ge(propertyName, value));
-                    break;
-                default:
-                    break;
-            }
+            criteria.add(Restrictions.eq(propertyName, value));
         }
     }
 
@@ -55,8 +43,8 @@ public class FlightDAO {
         	.createAlias("flight.Dptr_airport", "dptr_arp")
         	.createAlias("flight.Arr_airport", "arr_arp");
 
-        addRestrictionIfNotNull(criteria, "dptr_arp.city", form.getDptr_town(), 0);
-        addRestrictionIfNotNull(criteria, "arr_arp.city", form.getArr_town(), 0);
+        addRestrictionIfNotNull(criteria, "dptr_arp.city", form.getDptr_town());
+        addRestrictionIfNotNull(criteria, "arr_arp.city", form.getArr_town());
 
         try {
         	if (!form.getDptr_time().equals("")) {
@@ -69,23 +57,23 @@ public class FlightDAO {
 	        	arr_time.setTime(sdf.parse(form.getArr_time()));
 	        	criteria.add(Restrictions.le("pt_flight.arr", arr_time));
         	}
-	        
-	        //addRestrictionIfNotNull(criteria, "pt_flight.arr", arr_time, 1);
         } catch(ParseException ex) {}
-
 
         List<ParticularFlight> result = (List<ParticularFlight>) criteria.list();
 
         return result;
 	}
 
-	public List<ParticularFlight> search(SearchflightForm form) {
+    public ParticularFlight getFlightById(int id) {
         Session session = sessionFactory.getCurrentSession();
 
-        List<ParticularFlight> result = session.createCriteria(ParticularFlight.class).list();
+        ParticularFlight result = (ParticularFlight) session
+                .createCriteria(ParticularFlight.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
 
         return result;
-	}
+    }
 
 	public List<ParticularFlight> getAll() {
         Session session = sessionFactory.getCurrentSession();

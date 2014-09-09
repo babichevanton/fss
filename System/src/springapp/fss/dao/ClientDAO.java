@@ -1,6 +1,7 @@
 package springapp.fss.dao;
 
 import java.util.List;
+import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
@@ -22,21 +23,9 @@ public class ClientDAO {
 
 	private SessionFactory sessionFactory;
 
-    private void addRestrictionIfNotNull(Criteria criteria, String propertyName, Object value, int type) {
-        if (value != null) {
-            switch (type) {
-                case 0:
-                    criteria.add(Restrictions.eq(propertyName, value));
-                    break;
-                case 1:
-                    criteria.add(Restrictions.le(propertyName, value));
-                    break;
-                case 2:
-                    criteria.add(Restrictions.ge(propertyName, value));
-                    break;
-                default:
-                    break;
-            }
+    private void addRestrictionIfNotNull(Criteria criteria, String propertyName, String value) {
+        if (!value.equals("")) {
+            criteria.add(Restrictions.eq(propertyName, value));
         }
     }
 
@@ -52,27 +41,35 @@ public class ClientDAO {
 
         Criteria criteria = session
             .createCriteria(Client.class, "client")
-            .createAlias("client.seats", "seat")
-            .createAlias("seat.sclass", "sclass")
-            .createAlias("sclass.flight", "pt_flight")
-            .createAlias("pt_flight.flight", "flight")
-            .createAlias("flight.airline", "airline")
-            .createAlias("flight.dptr_airport", "dptr_airport")
-            .createAlias("flight.arr_airport", "arr_airport");
-        addRestrictionIfNotNull(criteria, "flight.number", form.getNumber(), 0);
-        addRestrictionIfNotNull(criteria, "dptr_airport.city", form.getDptr_city(), 0);
-        addRestrictionIfNotNull(criteria, "arr_airport.city", form.getArr_city(), 0);
-        addRestrictionIfNotNull(criteria, "airline.name", form.getAirline(), 0);
-        if (form.getOrdered()) {
-                addRestrictionIfNotNull(criteria, "seat.status", 1, 0);
+            .createAlias("client.Seats", "seat")
+            .createAlias("seat.Sclass", "sclass")
+            .createAlias("sclass.Flight", "pt_flight")
+            .createAlias("pt_flight.Flight", "flight")
+            .createAlias("flight.Airline", "airline")
+            .createAlias("flight.Dptr_airport", "dptr_airport")
+            .createAlias("flight.Arr_airport", "arr_airport");
+        addRestrictionIfNotNull(criteria, "flight.number", form.getNumber());
+        addRestrictionIfNotNull(criteria, "dptr_airport.city", form.getDptr_city());
+        addRestrictionIfNotNull(criteria, "arr_airport.city", form.getArr_city());
+        addRestrictionIfNotNull(criteria, "airline.name", form.getAirline());
+        if (!form.getOrdered() && form.getReserved()) {
+            criteria.add(Restrictions.eq("seat.status", 2));
+        } else if (form.getOrdered() && !form.getReserved()) {
+            criteria.add(Restrictions.eq("seat.status", 1));
         }
-        if (form.getReserved()) {
-                addRestrictionIfNotNull(criteria, "seat.status", 2, 0);
-        }
+
         try {
-            addRestrictionIfNotNull(criteria, "pt_flight.dptr", sdf.parse(form.getDptr_time()), 1);
-            addRestrictionIfNotNull(criteria, "pt_flight.arr", sdf.parse(form.getArr_time()), 2);
-        } catch (ParseException ex) {}
+            if (!form.getDptr_time().equals("")) {
+                Calendar dptr_time = Calendar.getInstance();
+                dptr_time.setTime(sdf.parse(form.getDptr_time()));
+                criteria.add(Restrictions.le("pt_flight.dptr", dptr_time));
+            }
+            if (!form.getArr_time().equals("")) {
+                Calendar arr_time = Calendar.getInstance();
+                arr_time.setTime(sdf.parse(form.getArr_time()));
+                criteria.add(Restrictions.le("pt_flight.arr", arr_time));
+            }
+        } catch(ParseException ex) {}
                 
         List<Client> result = (List<Client>) criteria.list();
 
