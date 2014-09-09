@@ -11,6 +11,7 @@
 	    <tr>
 	        <td><form:label path="dptr_time">Дата вылета</form:label></td>
 	        <td><form:input path="dptr_time" /></td>
+	        <td>Не раньше, чем</td>
 	    </tr>
 		<tr>
 	        <td><form:label path="arr_town">Город прилета</form:label></td>
@@ -19,6 +20,7 @@
 		<tr>
 	        <td><form:label path="arr_time">Дата прилета</form:label></td>
 	        <td><form:input path="arr_time" /></td>
+	        <td>Не позднее, чем</td>
 	    </tr>
 	    <tr>
 	        <td colspan="2">

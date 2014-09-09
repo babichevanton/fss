@@ -21,8 +21,8 @@ public class FlightDAO {
 
 	private SessionFactory sessionFactory;
 
-    private void addRestrictionIfNotNull(Criteria criteria, String propertyName, Object value, int type) {
-        if (value != null) {
+    private void addRestrictionIfNotNull(Criteria criteria, String propertyName, String value, int type) {
+        if (!value.equals("")) {
             switch (type) {
                 case 0:
                     criteria.add(Restrictions.eq(propertyName, value));
@@ -57,16 +57,22 @@ public class FlightDAO {
 
         addRestrictionIfNotNull(criteria, "dptr_arp.city", form.getDptr_town(), 0);
         addRestrictionIfNotNull(criteria, "arr_arp.city", form.getArr_town(), 0);
-        //*
+
         try {
-        	Calendar dptr_time = Calendar.getInstance();
-        	Calendar arr_time = Calendar.getInstance();
-        	dptr_time.setTime(sdf.parse(form.getDptr_time()));
-        	arr_time.setTime(sdf.parse(form.getArr_time()));
-	        addRestrictionIfNotNull(criteria, "pt_flight.dptr", dptr_time, 2);
-	        addRestrictionIfNotNull(criteria, "pt_flight.arr", arr_time, 1);
+        	if (!form.getDptr_time().equals("")) {
+	        	Calendar dptr_time = Calendar.getInstance();
+	        	dptr_time.setTime(sdf.parse(form.getDptr_time()));
+	        	criteria.add(Restrictions.ge("pt_flight.dptr", dptr_time));
+        	}
+        	if (!form.getArr_time().equals("")) {
+	        	Calendar arr_time = Calendar.getInstance();
+	        	arr_time.setTime(sdf.parse(form.getArr_time()));
+	        	criteria.add(Restrictions.le("pt_flight.arr", arr_time));
+        	}
+	        
+	        //addRestrictionIfNotNull(criteria, "pt_flight.arr", arr_time, 1);
         } catch(ParseException ex) {}
-		//*/
+
 
         List<ParticularFlight> result = (List<ParticularFlight>) criteria.list();
 
