@@ -4,7 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
  
 <hibernate-mapping>
-	<class name="springapp.fss.pojo.Airport" table="Airport">
+	<class lazy="false" name="springapp.fss.pojo.Airport" table="Airport">
 		<id name="id" type="int" column="idAirport" >
 			<generator class="identity"/>
 		</id>

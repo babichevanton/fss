@@ -6,7 +6,7 @@
         <c:when test="${not empty pt_flight}">
             <div class="row">
                 <h2>
-                    <p>${pt_flight.flight.number}</p>
+                    <p>Авиарейс ${pt_flight.flight.number}</p>
                     <p>Из:</p>
                     <p>${pt_flight.flight.dptr_airport.city} ${pt_flight.flight.dptr_airport.name} ${pt_flight.dptr.getTime()}</p>
                     <p>В:</p>
@@ -31,7 +31,7 @@
                                     <td>
                                         <c:choose>
                                             <c:when test="${seat.status == 0}">
-                                                <a href="<c:url value="/for_clients/flights/part_fl=${pt_flight.id}/order_seat=${seat.id}="/>">
+                                                <a href="<c:url value="/for_clients/client=${cl_id}/flights/part_fl=${pt_flight.id}/order_seat=${seat.id}"/>">
                                                     <p>Забронировать/приобрести</p>
                                                 </a>
                                             </c:when>

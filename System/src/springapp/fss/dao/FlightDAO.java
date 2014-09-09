@@ -35,7 +35,7 @@ public class FlightDAO {
 	public List<ParticularFlight> client_search(SearchflightForm form) {
         Session session = sessionFactory.getCurrentSession();
 
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         Criteria criteria = session
         	.createCriteria(ParticularFlight.class, "pt_flight")
@@ -84,4 +84,3 @@ public class FlightDAO {
 	}
 
 }
-

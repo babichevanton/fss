@@ -29,24 +29,26 @@ public class FlightController {
 		this.flightDAO = flightDao;
 	}
 
-    @RequestMapping(value = "/for_clients/searchflights", method = RequestMethod.GET)
-    public String view_searchflights_form(Model model) {
+    @RequestMapping(value = "/for_clients/client={id}/searchflights", method = RequestMethod.GET)
+    public String view_searchflights_form(@PathVariable(value="id") Integer id, Model model) {
     	model.addAttribute("command", new SearchflightForm());
         return "client_searchflights";
     }
 
-    @RequestMapping(value = "/for_clients/flights", method = RequestMethod.POST)
-    public String search_flights(@ModelAttribute("SpringWeb")SearchflightForm form, Model model) {
+    @RequestMapping(value = "/for_clients/client={id}/flights", method = RequestMethod.POST)
+    public String search_flights(@PathVariable(value="id") Integer id, @ModelAttribute("SpringWeb")SearchflightForm form, Model model) {
         List<ParticularFlight> flights = flightDAO.client_search(form);
         model.addAttribute("flights", flights);
 
         return "client_flights";
     }
 
-    @RequestMapping(value="/for_clients/flights/part_fl={id}", method=RequestMethod.GET)
-    public String view_flight(@PathVariable(value="id") Integer id, Model model) {
-        ParticularFlight pt_flight = (ParticularFlight) flightDAO.getFlightById(id);
+    @RequestMapping(value="/for_clients/client={cl_id}/flights/part_fl={fl_id}", method=RequestMethod.GET)
+    public String view_flight(@PathVariable(value="cl_id") Integer cl_id, @PathVariable(value="fl_id") Integer fl_id, Model model) {
+        ParticularFlight pt_flight = (ParticularFlight) flightDAO.getFlightById(fl_id);
         model.addAttribute("pt_flight", pt_flight);
+        model.addAttribute("cl_id", cl_id);
+
         return "client_flight";
     }
     

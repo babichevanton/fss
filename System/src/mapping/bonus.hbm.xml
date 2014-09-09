@@ -4,7 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
  
 <hibernate-mapping>
-	<class name="springapp.fss.pojo.Bonus" table="Bonus">
+	<class lazy="false" name="springapp.fss.pojo.Bonus" table="Bonus">
 		<id name="id" type="int" column="idBonus" >
 			<generator class="identity"/>
 		</id>

@@ -11,7 +11,7 @@
 	    <tr>
 	        <td><form:label path="dptr_time">Дата вылета</form:label></td>
 	        <td><form:input path="dptr_time" /></td>
-	        <td>Не раньше, чем</td>
+	        <td>dd/MM/yyyy</td>
 	    </tr>
 		<tr>
 	        <td><form:label path="arr_town">Город прилета</form:label></td>
@@ -20,14 +20,14 @@
 		<tr>
 	        <td><form:label path="arr_time">Дата прилета</form:label></td>
 	        <td><form:input path="arr_time" /></td>
-	        <td>Не позднее, чем</td>
+	        <td>dd/MM/yyyy</td>
 	    </tr>
 	    <tr>
 	        <td colspan="2">
 	            <input type="submit" value="Submit"/>
 	        </td>
 	    </tr>
-		</table>  
+		</table> 
 	</form:form>
 </div>
 <div class="container-fluid col-lg-5 col-lg-offset-3">

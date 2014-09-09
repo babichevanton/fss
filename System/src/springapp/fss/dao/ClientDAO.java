@@ -37,7 +37,7 @@ public class ClientDAO {
     public List<Client> search_clients(SearchClientForm form) {
         Session session = sessionFactory.getCurrentSession();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         Criteria criteria = session
             .createCriteria(Client.class, "client")

@@ -44,8 +44,8 @@ public class HomePageController {
     
     @RequestMapping(value = "/authorization/for_clients", method = RequestMethod.POST)
     public String authorize_client(@ModelAttribute("SpringWeb")AuthorizationForm form, Model model) {
-    	Client client = clientDAO.authorize_client(form);
-    	model.addAttribute("client", client);
+        Client client = clientDAO.authorize_client(form);
+        model.addAttribute("client", client);
 
         return "authorization_client_check";
     }
