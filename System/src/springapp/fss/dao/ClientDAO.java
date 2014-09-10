@@ -90,6 +90,17 @@ public class ClientDAO {
         return result;
     }
 
+    public Bonus getBonusById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Bonus result = (Bonus) session
+                .createCriteria(Bonus.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+
+        return result;
+    }
+
     public List<Seat> getClientSeats(Client client) {
         Session session = sessionFactory.getCurrentSession();
 
@@ -116,6 +127,12 @@ public class ClientDAO {
                 .list();
 
         return result;
+    }
+
+    public void deleteClientBonus(Bonus card) {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.delete(card);
     }
 
     public Client authorize_client(AuthorizationForm form) {

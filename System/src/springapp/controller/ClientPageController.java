@@ -46,4 +46,20 @@ public class ClientPageController {
 
         return "view_profile";
     }
+
+    @RequestMapping(value = "/for_clients/client={cl_id}/view_profile/del_bonus={b_id}_confirm", method = RequestMethod.GET)
+    public String delete_card(
+    		@PathVariable(value="cl_id") Integer cl_id,
+    		@PathVariable(value="b_id") Integer b_id,
+    		Model model) {
+        Bonus card = (Bonus) clientDAO.getBonusById(b_id);
+        model.addAttribute("name", card.getName());
+
+        clientDAO.deleteClientBonus(card);
+
+        model.addAttribute("cl_id", cl_id);
+
+        return "deletecard_confirmation";
+    }
+
 }

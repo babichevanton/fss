@@ -118,5 +118,20 @@ public class SeatDAO {
         session.saveOrUpdate(seat);
     }
 
+    public void dereserveSeatById(int s_id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Seat seat = (Seat) session
+                .createCriteria(Seat.class)
+                .add(Restrictions.eq("id", s_id))
+                .uniqueResult();
+
+        seat.setOwner(null);
+
+        seat.setStatus((byte) 0);
+
+        session.saveOrUpdate(seat);
+    }
+
 }
 

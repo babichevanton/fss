@@ -46,6 +46,20 @@ public class SeatController {
         return "order_seat";
     }
     
+    @RequestMapping(value="/for_clients/client={cl_id}/seat={s_id}/de-reserve", method=RequestMethod.GET)
+    public String de_order(
+            @PathVariable(value="cl_id") Integer cl_id, 
+            @PathVariable(value="s_id") Integer s_id, 
+            Model model) {
+        seatDAO.dereserveSeatById(s_id);
+        Seat seat = (Seat) seatDAO.getSeatById(s_id);
+
+        model.addAttribute("seat", seat);
+        model.addAttribute("cl_id", cl_id);
+
+        return "dereserve_confirmation";
+    }
+    
     @RequestMapping(value = "/for_clients/client={cl_id}/flights/part_fl={fl_id}/order_seat={s_id}/confirmation", method = RequestMethod.POST)
     public String order_seat(
             @PathVariable(value="cl_id") Integer cl_id, 

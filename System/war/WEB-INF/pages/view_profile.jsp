@@ -75,7 +75,7 @@
                       <td>${card.airline.name}</td>
                       <td>${card.points}</td>
                       <td>
-                        <a href="<c:url value="/for_clients/client={cl_id}/view_profile/delbonusconfirm"/>">
+                        <a href="<c:url value="/for_clients/client=${client.id}/view_profile/del_bonus=${card.id}_confirm"/>">
                           <p>Удалить</p>
                         </a>
                       </td>
@@ -88,9 +88,7 @@
             <p>У вас нет ниодной бонусной карты</p>
         </c:otherwise>
     </c:choose>
-    <a href="<c:url value="/for_clients/client={cl_id}/view_profile/addbonus"/>">
-      <p class="text-left" style="margin-top:10px;" style="font-size:14px;">Добавить бонусную карту</p>
-    </a>
+    <br/>
     <h3>Забронированные места</h3>
     <c:choose>
         <c:when test="${not empty seats}">
@@ -116,7 +114,7 @@
                         <td>${seat.getServiceClass().getParticularFlight().arr.getTime()}</td>
                         <td>${seat.row}${seat.symb}</td>
                         <td>
-                          <a href="<c:url value="/for_clients/client={cl_id}/de-reserve"/>">
+                          <a href="<c:url value="/for_clients/client=${client.id}/seat=${seat.id}/de-reserve"/>">
                             <p class="text-center">Разбронировать</p>
                           </a>
                         </td>
