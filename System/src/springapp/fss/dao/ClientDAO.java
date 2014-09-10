@@ -2,6 +2,7 @@ package springapp.fss.dao;
 
 import java.util.List;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
@@ -16,6 +17,8 @@ import springapp.fss.form.SearchClientForm;
 import springapp.fss.form.AuthorizationForm;
 import springapp.fss.form.RegistrationForm;
 import springapp.fss.pojo.Client;
+import springapp.fss.pojo.Bonus;
+import springapp.fss.pojo.Seat;
 import springapp.fss.pojo.Administrator;
 
 @Repository("clientDAO")
@@ -83,6 +86,34 @@ public class ClientDAO {
                 .createCriteria(Client.class)
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
+
+        return result;
+    }
+
+    public List<Seat> getClientSeats(Client client) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Calendar now = new GregorianCalendar();
+
+        List<Seat> result = (List<Seat>) session
+                .createCriteria(Seat.class, "seat")
+                .createAlias("seat.ServiceClass", "sclass")
+                .createAlias("sclass.ParticularFlight", "pt_flight")
+                .add(Restrictions.eq("Owner", client))
+                .add(Restrictions.eq("status", (byte) 1))
+                .add(Restrictions.le("pt_flight.dptr", now))
+                .list();
+
+        return result;
+    }
+
+    public List<Bonus> getClientBonuses(Client client) {
+        Session session = sessionFactory.getCurrentSession();
+
+        List<Bonus> result = (List<Bonus>) session
+                .createCriteria(Bonus.class, "seat")
+                .add(Restrictions.eq("Client", client))
+                .list();
 
         return result;
     }

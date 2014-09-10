@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="row">
-	<a href="<c:url value="for_clients/client=${client.id}/profileview"/>">
+	<a href="<c:url value="/for_clients/client=${client.id}/view_profile"/>">
 		<p class="text-left" style="margin-top:10px;" style="font-size:20px;">Управление профилем</p>
 	</a>
 	<p class="text-center" style="font-size:14px;">Доступна возможность изменять данные в своем профиле, а также полностью удалить его.</p>
