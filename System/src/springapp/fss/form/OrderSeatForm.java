@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class OrderSeatForm implements Serializable {
 /*---------------------------------Columns---------------------------------*/	
-	private String type;
+	private String type = "order";
 	private boolean card;
 	private int id;
 	private String account;

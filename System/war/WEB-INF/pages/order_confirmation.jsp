@@ -16,8 +16,8 @@
 	</c:choose>
 </div>
 <div class="container-fluid col-lg-5 col-lg-offset-3">
-    <a href="<c:url value="/home"/>" style="color:inherit;">
-        <p class="text-center" style="font-size:20px;">На главную</p>
+    <a href="<c:url value="/for_clients/client=${cl_id}"/>" style="color:inherit;">
+        <p class="text-center" style="font-size:20px;">Перейти в меню пользователя</p>
     </a>
 </div>
 <%@ include file="/WEB-INF/pages/footer.jsp" %>

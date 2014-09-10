@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/pages/header.jsp" %>
 <%@ include file="/WEB-INF/pages/includes.jsp" %>
 <div class="container-fluid col-lg-5 col-lg-offset-3">
-	<form:form method="POST" action="for_clients">
+	<form:form method="POST" action="clientcheck">
 		<table>
 		<tr>
 	        <td><form:label path="login">Логин</form:label></td>

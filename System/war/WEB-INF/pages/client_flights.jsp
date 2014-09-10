@@ -72,6 +72,10 @@
       </c:when>
       <c:otherwise>
           <p class="text-center text-danger" style="margin-top:20px;">Авиарейсов, соответствующих критерию поиска, не найдено.</p>
+          <br/>
+          <a href="<c:url value="searchflights"/>">
+            <p class="text-center">На страницу поиска</p>
+          </a>
       </c:otherwise>
   </c:choose>
 </div>

@@ -4,7 +4,7 @@
 <div class="container-fluid col-lg-5 col-lg-offset-3">
   <c:choose>
       <c:when test="${not empty client}">
-		<%@ include file="/WEB-INF/pages/for_clients.jsp" %>
+		<%@ include file="/WEB-INF/pages/authorization_client_succeed.jsp" %>
       </c:when>
       <c:otherwise>
 		<%@ include file="/WEB-INF/pages/authorization_client_failed.jsp" %>

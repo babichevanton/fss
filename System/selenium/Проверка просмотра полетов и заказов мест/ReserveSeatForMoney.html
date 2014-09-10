@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://selenium2.ru/" />
+<title>GettingListOfFlights</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">GettingListOfFlights</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://localhost:8080/fss/home</td>
+	<td></td>
+</tr>
+<!---->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Клиенты</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login</td>
+	<td>vasyapetr</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>qwerty@1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-center.text-success</td>
+	<td>Вы успешно авторизовались</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[2]/div/div/a/h1/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-center.text-success</td>
+	<td>Здравствуйте, Terescenko Vasiliy Petrovich!</td>
+</tr>
+<!---->
+<!--Проверка профиля-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=p.text-left</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-lg-10 &gt; h1 &gt; p.text-center</td>
+	<td>Профиль пользователя vasyapetr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//table[2]/tbody/tr/td</td>
+	<td>1240058474</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[3]</td>
+	<td>12500</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//table[3]/tbody/tr/td</td>
+	<td>AJ8946</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[8]/p</td>
+	<td>Забронировано</td>
+</tr>
+<!---->
+<!--Переход к поиску авиарейсов-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[2]/h1/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[3]/a/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dptr_town</td>
+	<td>Berlin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dptr_time</td>
+	<td>12/05/2014</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=arr_town</td>
+	<td>Moscow</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=arr_time</td>
+	<td>14/05/2014</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-lg-10 &gt; h1 &gt; p.text-center</td>
+	<td>Авиарейсы</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>FL7492</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[8]/table/tbody/tr/td</td>
+	<td>econom</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[8]/table/tbody/tr/td[2]</td>
+	<td>5100.5</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//td[8]/table/tbody/tr/td[3]</td>
+	<td>1</td>
+</tr>
+<!---->
+<!--Просмотр информации о рейсе-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; p.text-center</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2 &gt; p</td>
+	<td>Авиарейс FL7492</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[2]</td>
+	<td>C</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[3]/a/p</td>
+	<td>Забронировать/приобрести</td>
+</tr>
+<!---->
+<!--Приобретение места-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//td[3]/a/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-left</td>
+	<td>Место</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=type1</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='command']/p[2]</td>
+	<td>Доступно приобретение места за бонусы на следующей карте:</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//form[@id='command']/table/tbody/tr/td[2]</td>
+	<td>1240058474</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//form[@id='command']/table/tbody/tr/td[3]</td>
+	<td>12500</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//form[@id='command']/p[3]</td>
+	<td>Приобретение места возможно за 12046.0 баллов:</td>
+</tr>
+<!---->
+<!--Приобретение места за бонусы-->
+<tr>
+	<td>click</td>
+	<td>id=type2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=account</td>
+	<td>1512354126878890</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td>1512354126878890</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-center.text-success</td>
+	<td>Вы успешно зарезервировали место 2C</td>
+</tr>
+<!---->
+<!--Проверка профиля. Ищем купленное место-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; p.text-center</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=p.text-left</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-lg-10 &gt; h1 &gt; p.text-center</td>
+	<td>Профиль пользователя vasyapetr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[3]</td>
+	<td>24546</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//table[3]/tbody/tr[2]/td</td>
+	<td>FL7492</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//tr[2]/td[8]/p</td>
+	<td>Оплачено</td>
+</tr>
+<!---->
+</tbody></table>
+</body>
+</html>

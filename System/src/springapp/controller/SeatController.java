@@ -70,6 +70,7 @@ public class SeatController {
         Seat seat = (Seat) seatDAO.getSeatById(s_id);
 
         model.addAttribute("seat", seat);
+        model.addAttribute("cl_id", cl_id);
 
         return "order_confirmation";
     }

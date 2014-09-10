@@ -98,8 +98,8 @@ public class SeatDAO {
 
                 Bonus bonus = (Bonus) session
                         .createCriteria(Bonus.class)
-                        .add(Restrictions.eq("airline", airline))
-                        .add(Restrictions.eq("client", client))
+                        .add(Restrictions.eq("Airline", airline))
+                        .add(Restrictions.eq("Client", client))
                         .addOrder(Order.desc("points"))
                         .setMaxResults(1)
                         .uniqueResult();

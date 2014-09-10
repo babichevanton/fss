@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ include file="/WEB-INF/pages/header.jsp" %>
+<%@ include file="/WEB-INF/pages/includes.jsp" %>
 <div class="row">
 	<div class="container-fluid col-lg-5 col-lg-offset-3">
 	    <h3><p class="text-center text-success" style="font-size:20px;">Здравствуйте, ${client.surname} ${client.name} ${client.patronymic}!</p></h3>
@@ -18,3 +19,4 @@
 	</a>
 	<p class="text-center" style="font-size:14px;">Здесь доступна информация о доступных авиалиниях. Заполните форму поиска, и сайт предоставит записи обо всех авиарейсах, удовлетворяющих критериям поиска</p>
 </div>
+<%@ include file="/WEB-INF/pages/footer.jsp" %>

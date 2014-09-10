@@ -34,6 +34,13 @@ public class ClientPageController {
 		this.clientDAO = clientDao;
 	}
 
+    @RequestMapping(value = "/for_clients/client={cl_id}", method = RequestMethod.GET)
+    public String admin_authorization(@PathVariable(value="cl_id") Integer cl_id, Model model) {
+    	Client client = clientDAO.getClientById(cl_id);
+    	model.addAttribute("client", client);
+    	return "for_clients";
+    }
+    
     @RequestMapping(value = "/for_clients/client={cl_id}/view_profile", method = RequestMethod.GET)
     public String order_seat(@PathVariable(value="cl_id") Integer cl_id, Model model) {
     	Client client = clientDAO.getClientById(cl_id);
@@ -60,6 +67,16 @@ public class ClientPageController {
         model.addAttribute("cl_id", cl_id);
 
         return "deletecard_confirmation";
+    }
+
+    @RequestMapping(value = "/for_clients/client={cl_id}/del_profile", method = RequestMethod.GET)
+    public String delete_profile(
+    		@PathVariable(value="cl_id") Integer cl_id,
+    		Model model) {
+    	Client client = clientDAO.getClientById(cl_id);
+        clientDAO.deleteClient(client);
+
+        return "deleteprofile_confirmation";
     }
 
 }

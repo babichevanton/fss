@@ -9,11 +9,17 @@
     <property name="name" value="fss"/>
 	<property name="deploy.path" value="."/>
 
+    <property name="sql.driver" value="com.mysql.jdbc.Driver"/>
+    <property name="sql.url" value="jdbc:mysql://localhost:3306/FlightSupportSystem"/>
+    <property name="sql.user" value="root"/>
+    <property name="sql.pass" value="admin"/>
+
     <path id="master-classpath">
         <fileset dir="${web.dir}/WEB-INF/lib">
             <include name="*.jar"/>
         </fileset>
         <pathelement path="${build.dir}"/>
+        <pathelement location="${sql.driver}"/>
     </path>
 
     <target name="usage">
@@ -23,10 +29,20 @@
         <echo message=""/>
         <echo message="Available targets are:"/>
         <echo message=""/>
+        <echo message="db_create     --> Create and fill the database for application"/>
+        <echo message="clean     --> Remove compiled classes"/>
         <echo message="build     --> Build the application"/>
         <echo message="deploy    --> Deploy application as directory"/>
         <echo message="deploywar --> Deploy application as a WAR file"/>
         <echo message=""/>
+    </target>
+
+    <target name="db_create">
+        <sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.pass}" classpathref="master-classpath" >
+            <transaction src="db/drop.sql"/>
+            <transaction src="db/create.sql"/>
+            <transaction src="db/initialize.sql"/>
+        </sql>
     </target>
 
     <target name="build" description="Compile main source tree java files">
@@ -46,7 +62,7 @@
         </copy>
     </target>
 
-    <target name="deploywar" depends="clean, build" description="Deploy application as a WAR file">
+    <target name="deploywar" depends="db_create, clean, build" description="Deploy application as a WAR file">
         <war destfile="${name}.war"
              webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}">

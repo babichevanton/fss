@@ -111,7 +111,6 @@ public class ClientDAO {
                 .createAlias("seat.ServiceClass", "sclass")
                 .createAlias("sclass.ParticularFlight", "pt_flight")
                 .add(Restrictions.eq("Owner", client))
-                .add(Restrictions.eq("status", (byte) 1))
                 .add(Restrictions.le("pt_flight.dptr", now))
                 .list();
 
@@ -133,6 +132,12 @@ public class ClientDAO {
         Session session = sessionFactory.getCurrentSession();
 
         session.delete(card);
+    }
+
+    public void deleteClient(Client client) {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.delete(client);
     }
 
     public Client authorize_client(AuthorizationForm form) {

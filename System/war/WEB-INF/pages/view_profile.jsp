@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-lg-10">
-      <h1><p class="text-center" style="font-size:64px;"></p></h1>
+      <h1><p class="text-center" style="font-size:32px;">Профиль пользователя ${client.login}</p></h1>
   </div>
 </div>
 <div class="row">
@@ -89,7 +89,7 @@
         </c:otherwise>
     </c:choose>
     <br/>
-    <h3>Забронированные места</h3>
+    <h3>Закрепленные билеты</h3>
     <c:choose>
         <c:when test="${not empty seats}">
             <table class="table table-hover">
@@ -114,9 +114,17 @@
                         <td>${seat.getServiceClass().getParticularFlight().arr.getTime()}</td>
                         <td>${seat.row}${seat.symb}</td>
                         <td>
-                          <a href="<c:url value="/for_clients/client=${client.id}/seat=${seat.id}/de-reserve"/>">
-                            <p class="text-center">Разбронировать</p>
-                          </a>
+                          <c:choose>
+                            <c:when test="${seat.status == 1}">
+                              <p>Забронировано</p>
+                              <a href="<c:url value="/for_clients/client=${client.id}/seat=${seat.id}/de-reserve"/>">
+                                <p class="text-center">Разбронировать</p>
+                              </a>
+                            </c:when>
+                            <c:otherwise>
+                              <p>Оплачено</p>
+                            </c:otherwise>
+                          </c:choose>
                         </td>
                     </tr>
                 </c:forEach>
@@ -124,9 +132,17 @@
             </table>
         </c:when>
         <c:otherwise>
-            <p>У вас нет ни одного забронированного места</p>
+            <p>За вами не закреплено ни одно место</p>
         </c:otherwise>
     </c:choose>
+    <br/>
+    <a href="<c:url value="/for_clients/client=${client.id}/del_profile"/>" style="color:inherit;">
+      <h1><p class="text-center" style="font-size:16px;">Удалить профиль</p></h1>
+    </a>
+    <br/>
+    <a href="<c:url value="/for_clients/client=${client.id}"/>" style="color:inherit;">
+      <h1><p class="text-center" style="font-size:16px;">Перейти в меню пользователя</p></h1>
+    </a>
   </div>
 </div>
 <%@ include file="/WEB-INF/pages/footer.jsp" %>

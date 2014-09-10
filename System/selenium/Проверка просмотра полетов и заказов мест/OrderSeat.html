@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://selenium2.ru/" />
+<title>GettingListOfFlights</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">GettingListOfFlights</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://localhost:8080/fss/home</td>
+	<td></td>
+</tr>
+<!---->
+<!--Авторизация-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=p.text-right</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login</td>
+	<td>klimov.ia</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>qhostrider</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<!--Успех-->
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-center.text-success</td>
+	<td>Вы успешно авторизовались</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[2]/div/div/a/h1/p</td>
+	<td></td>
+</tr>
+<!---->
+<!--Проверка профиля-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=p.text-left</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-lg-10 &gt; h1 &gt; p.text-center</td>
+	<td>Профиль пользователя klimov.ia</td>
+</tr>
+<!--Забронированных мест нет-->
+<tr>
+	<td>verifyText</td>
+	<td>//div/p</td>
+	<td>За вами не закреплено ни одно место</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[2]/h1/p</td>
+	<td></td>
+</tr>
+<!---->
+<!--Бронирование билета-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[3]/a/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dptr_town</td>
+	<td>Moscow</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=arr_town</td>
+	<td>Berlin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; p.text-center</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//td[3]/a/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-left</td>
+	<td>Место</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=type1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<!--Успех-->
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-center.text-success</td>
+	<td>Вы успешно забронировали место 12A</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; p.text-center</td>
+	<td></td>
+</tr>
+<!---->
+<!--Проверка профиля-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=p.text-left</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-lg-10 &gt; h1 &gt; p.text-center</td>
+	<td>Профиль пользователя klimov.ia</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//table[3]/tbody/tr/td</td>
+	<td>AJ8946</td>
+</tr>
+<!--Наш заброниованный билет-->
+<tr>
+	<td>assertText</td>
+	<td>//td[8]/p</td>
+	<td>Забронировано</td>
+</tr>
+<!---->
+<!--Разбронирование-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; p.text-center</td>
+	<td></td>
+</tr>
+<!--Успех-->
+<tr>
+	<td>assertText</td>
+	<td>css=p.text-center.text-success</td>
+	<td>Вы разбронировали место 12A</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; p.text-center</td>
+	<td></td>
+</tr>
+<!--Место разбронировано и снова свободно-->
+<tr>
+	<td>assertText</td>
+	<td>//div/p</td>
+	<td>За вами не закреплено ни одно место</td>
+</tr>
+</tbody></table>
+</body>
+</html>
